@@ -1,3 +1,4 @@
+/* Root Variables */
 :root {
 	--primary: #fc6732;
 	--background: #121212;
@@ -10,6 +11,7 @@
 	--transition: 0.3s ease-in-out;
 }
 
+/* General Reset */
 * {
 	margin: 0;
 	padding: 0;
@@ -75,20 +77,23 @@ input[type="submit"]:hover {
 	opacity: 0.9;
 }
 
-.todo-content input {
-	background: transparent;
-	border: none;
-	color: white;
-	outline: none;
+.todo-content textarea {
+	display: block;
 	width: 100%;
+	background: transparent;
+	margin-left: 10px;
+	border: none;
+	color: var(--text);
 	font-size: 15px;
-	text-overflow: ellipsis;
-	white-space: wrap;
+	outline: none;
+	resize: none;
+	overflow-wrap: break-word;
+	white-space: pre-wrap;
 }
 
-.todo-item.done .todo-content input {
+.todo-item.done .todo-content textarea {
 	text-decoration: line-through;
-	color: rgb(122, 121, 121);
+	color: var(--text-muted);
 }
 
 .todo-list {
@@ -97,8 +102,9 @@ input[type="submit"]:hover {
 
 .todo-item {
 	display: flex;
-	align-items: center;
+	align-items: flex-start; 
 	justify-content: space-between;
+	gap: 5px; 
 	padding: 1rem;
 	margin-bottom: 1rem;
 	background: #181818;
@@ -130,7 +136,7 @@ input[type="submit"]:hover {
 	appearance: none;
 	width: 20px;
 	height: 20px;
-	border: var(--shadow);
+	border: 1px solid var(--border);
 	border-radius: 5px;
 	background-color: white;
 	cursor: pointer;
