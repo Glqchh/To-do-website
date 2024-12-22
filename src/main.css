@@ -80,8 +80,10 @@ input[type="submit"]:hover {
 	border: none;
 	color: white;
 	outline: none;
-	width: 80%;
-	font-size: 20px;
+	width: 100%;
+	font-size: 15px;
+	text-overflow: ellipsis;
+	white-space: wrap;
 }
 
 .todo-item.done .todo-content input {
