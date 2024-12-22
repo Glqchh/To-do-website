@@ -9,6 +9,12 @@ const todos_asc = computed(() =>
   todos.value.sort((a, b) => a.createdAt - b.createdAt)
 );
 
+const autoResize = (event) => {
+  const textarea = event.target;
+  textarea.style.height = 'auto'; // Reset height to calculate new height
+  textarea.style.height = `${textarea.scrollHeight}px`; // Set height to match content
+};
+
 watch(name, (newVal) => {
   localStorage.setItem('name', newVal);
 });
@@ -73,14 +79,14 @@ onMounted(() => {
             <input type="checkbox" v-model="todo.done" />
           </label>
           <div class="todo-content">
-            <!-- Replace input with textarea -->
-            <textarea 
+             <textarea 
               v-model="todo.content"
               :readonly="!todo.editable"
-              @dblclick="todo.editable = true"
-              @blur="todo.editable = false"
+               @input="autoResize($event)"
+               @dblclick="todo.editable = true"
+               @blur="todo.editable = false"
             ></textarea>
-          </div>
+        </div>
           <div class="actions">
             <button class="delete" @click="removeTodo(todo)">Delete</button>
           </div>
