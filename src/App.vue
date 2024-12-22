@@ -73,7 +73,13 @@ onMounted(() => {
             <input type="checkbox" v-model="todo.done" />
           </label>
           <div class="todo-content">
-            <input type="text" v-model="todo.content" />
+            <!-- Replace input with textarea -->
+            <textarea 
+              v-model="todo.content"
+              :readonly="!todo.editable"
+              @dblclick="todo.editable = true"
+              @blur="todo.editable = false"
+            ></textarea>
           </div>
           <div class="actions">
             <button class="delete" @click="removeTodo(todo)">Delete</button>
